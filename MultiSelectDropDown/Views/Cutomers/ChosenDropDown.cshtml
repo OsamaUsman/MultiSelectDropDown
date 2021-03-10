@@ -1,0 +1,25 @@
+﻿@model MultiSelectDropDown.Models.Customers
+@{
+    ViewBag.Title = "ChosenDropDown";
+}
+
+<h2>ChosenDropDown</h2>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="~/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css" integrity="sha512-0nkKORjFgcyxv3HbE4rzFUlENUMNqic/EzDIeYCgsKa/nwqr2B91Vu/tNAu4Q0cBuG4Xe/D1f/freEci/7GDRA==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.js" integrity="sha512-eSeh0V+8U3qoxFnK3KgBsM69hrMOGMBy3CNxq/T4BArsSQJfKVsKb5joMqIPrNMjRQSTl4xG8oJRpgU2o9I7HQ==" crossorigin="anonymous"></script>
+
+
+@using (@Html.BeginForm())
+{
+    @Html.DropDownListFor(model => model.CustomersArray, Model.GetCustomersList.Select(
+    s => new SelectListItem { Text = s.CustomerName, Value = s.CustomerName.ToString() }), new { @class = "form-control chosen-select", @multiple = true })
+
+    <input type="submit" value="save" />
+
+}
+<script>
+    $(".chosen-select").chosen();
+</script>
